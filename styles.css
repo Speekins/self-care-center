@@ -1,5 +1,95 @@
-/* font-family: 'Quicksand', sans-serif;
-COLORS
+* {
+  font-family: 'Quicksand', sans-serif;
+  
+}
+
+body {
+  background: rgb(19,77,113);
+  background: linear-gradient(180deg, rgba(19,77,113,1) 0%, rgba(120,167,198,1) 35%, rgba(247,228,191,1) 100%);
+  background-attachment: fixed;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+h1 {
+  margin-bottom: 100px;
+}
+
+.button-section {
+  height: 125px;
+  width: 800px;
+  display: flex;
+  flex-flow: row wrap;
+  flex-direction: row;
+  justify-content: center;
+  background-color: white;
+  color: black;
+  border: 0;
+  border-radius: 15px;
+  margin-bottom: 100px;
+}
+
+.button-section > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40%;
+  width: 40%;
+}
+
+button {
+  padding: 5px 50px;
+  border-radius: 5px;
+  color: white;
+  background-color: #134d71;
+  border: none;
+  font-size: 20px;
+  transition-duration: 500ms;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background-color: white;
+  color: #134d71;
+  border: 1px solid #134d71;
+}
+
+label {
+  margin: 10px 20px;
+  font-size: 22px;
+  font-style: italic;
+}
+
+#affirmation,
+#mantra {
+  margin: 10px 10px;
+  transform: scale(1.5);
+}
+
+div {
+  padding: 0;
+}
+
+.display-window {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+  height: 175px;
+  width: 80%;
+}
+
+#meditation-svg {
+  height: 100px;
+  width: auto;
+}
+/* COLORS
 light-yellow - #f7e4bf;
 light-blue - #78a7c6;
 dark-blue - #134d71;

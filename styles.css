@@ -83,11 +83,17 @@ div {
   border-radius: 10px;
   height: 175px;
   width: 80%;
+  color: black;
+  font-size: 30px;
 }
 
 #meditation-svg {
   height: 100px;
   width: auto;
+}
+
+.hidden {
+  display: none;
 }
 /* COLORS
 light-yellow - #f7e4bf;

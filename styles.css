@@ -92,9 +92,19 @@ div {
   width: auto;
 }
 
+.clear {
+  margin-top: 15px;
+}
+
 .hidden {
   display: none;
 }
+
+.disabled {
+  opacity: .06;
+  pointer-events: none;
+}
+
 /* COLORS
 light-yellow - #f7e4bf;
 light-blue - #78a7c6;

@@ -63,7 +63,7 @@ function assignPhrase() {
   } else {
     phraseToDisplay = randomPhrase(affirmations);
   }
-  displayPhrase();
+  setTimeOut(displayPhrase(), 5000);
 }
 
 function displayPhrase() {

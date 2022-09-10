@@ -101,14 +101,6 @@ div {
 }
 
 .disabled {
-  opacity: .06;
+  opacity: 30%;
   pointer-events: none;
 }
-
-/* COLORS
-light-yellow - #f7e4bf;
-light-blue - #78a7c6;
-dark-blue - #134d71;
-white - #ffffff;
-black - #000000;
-*/

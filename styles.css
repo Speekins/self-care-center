@@ -9,6 +9,18 @@ body {
   background-attachment: fixed;
 }
 
+.body-mantra {
+  background: rgb(36,19,113);
+  background: linear-gradient(45deg, rgba(36,19,113,1) 0%, rgba(166,120,198,1) 35%, rgba(247,191,229,1) 100%);
+  background-attachment: fixed;
+}
+
+.body-affirmation {
+  background: rgb(245,179,72);
+  background: linear-gradient(135deg, rgba(245,179,72,1) 0%, rgba(40,194,227,1) 50%, rgba(8,223,232,1) 100%);
+  background-attachment: fixed;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -18,11 +30,12 @@ main {
 
 h1 {
   margin-bottom: 100px;
+  font-size: 40px;
 }
 
 .button-section {
   height: 125px;
-  width: 800px;
+  width: 50%;
   display: flex;
   flex-flow: row wrap;
   flex-direction: row;
@@ -82,7 +95,7 @@ div {
   background-color: white;
   border-radius: 10px;
   height: 175px;
-  width: 80%;
+  width: 70%;
   color: black;
   font-size: 30px;
 }
@@ -103,4 +116,71 @@ div {
 .disabled {
   opacity: 30%;
   pointer-events: none;
+}
+
+@media (max-width: 1320px) {
+  .receive-message {
+    font-size: 15px;
+    padding: 5px 40px;
+  }
+
+  h1 {
+    margin-bottom: 50px;
+  }
+
+  .display-window {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .button-section {
+    height: 25%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    padding-bottom: 10px;
+    margin-bottom: 90px;
+  }
+
+  .receive-message {
+    font-size: 12px;
+    padding: 5px 20px;
+  }
+
+  h1 {
+    margin-bottom: 30px;
+    font-size: 30px;
+  }
+
+  .button-section {
+    margin-bottom: 50px;
+  }
+
+  .display-window {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  h1 {
+    margin-bottom: 25px;
+    font-size: 30px;
+  }
+
+  .button-section {
+    margin-bottom: 20px;
+  }
+
+  .receive-message {
+    font-size: 10px;
+    padding: 5px 25px;
+}
+
+.display-window {
+  font-size: 15px;
+}
 }

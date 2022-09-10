@@ -11,24 +11,6 @@ radioMantra.addEventListener('click', unclick);
 radioAffirmation.addEventListener('click', unclick);
 clearButton.addEventListener('click', clearPage)
 
-function unclick() {
-  var disabled = !receiveMessageButton.classList.contains('disabled');
-  if (disabled && radioMantra.checked === true) {
-    radioMantra.checked = false;
-    userChoice = undefined;
-    receiveMessageButton.classList.add('disabled');
-  } else if (disabled && radioAffirmation.checked === true) {
-    radioAffirmation.checked = false;
-    userChoice = undefined;
-    receiveMessageButton.classList.add('disabled');
-  } else { enableButton() };
-}
-
-function enableButton() {
-  receiveMessageButton.classList.remove('disabled');
-  userChoice = document.querySelector('input[name=user-choice]:checked').value;
-}
-
 function randomPhrase(array) {
   var randomIndex = randomNumber(array);
   var randomPhrase = array[randomIndex];
@@ -40,6 +22,36 @@ function randomNumber(array) {
   var index = Math.floor(Math.random() * max);
   return index;
 };
+
+function unclick() {
+  var disabled = !receiveMessageButton.classList.contains('disabled');
+  
+  if (disabled && radioMantra.checked === true) {
+    radioMantra.checked = false;
+    userChoice = undefined;
+    document.body.classList.remove('body-mantra');
+    receiveMessageButton.classList.add('disabled');
+  } else if (disabled && radioAffirmation.checked === true) {
+    radioAffirmation.checked = false;
+    userChoice = undefined;
+    document.body.classList.remove('body-affirmation');
+    receiveMessageButton.classList.add('disabled');
+  } else { enableButton() };
+}
+
+
+
+function enableButton() {
+  receiveMessageButton.classList.remove('disabled');
+  userChoice = document.querySelector('input[name=user-choice]:checked').value;
+  if (userChoice === "mantra") {
+    document.body.classList.remove('body-affirmation');
+    document.body.classList.add('body-mantra');
+  } else {
+    document.body.classList.remove('body-mantra');
+    document.body.classList.add('body-affirmation');
+  }
+}
 
 function assignPhrase() {
   if (userChoice === undefined) {

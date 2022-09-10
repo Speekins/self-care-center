@@ -1,23 +1,23 @@
 * {
   font-family: 'Quicksand', sans-serif;
-  
+
 }
 
 body {
-  background: rgb(19,77,113);
-  background: linear-gradient(180deg, rgba(19,77,113,1) 0%, rgba(120,167,198,1) 35%, rgba(247,228,191,1) 100%);
+  background: rgb(19, 77, 113);
+  background: linear-gradient(180deg, rgba(19, 77, 113, 1) 0%, rgba(120, 167, 198, 1) 35%, rgba(247, 228, 191, 1) 100%);
   background-attachment: fixed;
 }
 
 .body-mantra {
-  background: rgb(36,19,113);
-  background: linear-gradient(45deg, rgba(36,19,113,1) 0%, rgba(166,120,198,1) 35%, rgba(247,191,229,1) 100%);
+  background: rgb(36, 19, 113);
+  background: linear-gradient(45deg, rgba(36, 19, 113, 1) 0%, rgba(166, 120, 198, 1) 35%, rgba(247, 191, 229, 1) 100%);
   background-attachment: fixed;
 }
 
 .body-affirmation {
-  background: rgb(245,179,72);
-  background: linear-gradient(135deg, rgba(245,179,72,1) 0%, rgba(40,194,227,1) 50%, rgba(8,223,232,1) 100%);
+  background: rgb(245, 179, 72);
+  background: linear-gradient(135deg, rgba(245, 179, 72, 1) 0%, rgba(40, 194, 227, 1) 50%, rgba(8, 223, 232, 1) 100%);
   background-attachment: fixed;
 }
 
@@ -105,13 +105,47 @@ p {
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
-#meditation-svg {
+.meditation-svg {
   height: 100px;
   width: auto;
+  animation: fadeIn 3s;
+}
+
+.meditation-animation {
+  animation: loading 6s;
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(1);
+  }
+  16% {
+    transform: scale(1.1);
+  }
+  33% {
+    transform: scale(1.2);
+  }
+  49% {
+    transform: scale(1.3);
+  }
+  67% {
+    transform: scale(1.2);
+  }
+  83% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .clear {
@@ -128,7 +162,7 @@ p {
 }
 
 @media (max-width: 1320px) {
-  .receive-message {
+  .button {
     font-size: 15px;
     padding: 5px 40px;
   }
@@ -139,6 +173,13 @@ p {
 
   .display-window {
     font-size: 25px;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    background-color: white;
+    color: #134d71;
+    border: 1px solid #134d71;
   }
 }
 
@@ -172,6 +213,13 @@ p {
   .display-window {
     font-size: 20px;
   }
+
+  button:hover {
+    transform: scale(1.05);
+    background-color: white;
+    color: #134d71;
+    border: 1px solid #134d71;
+  }
 }
 
 @media (max-width: 767px) {
@@ -187,9 +235,16 @@ p {
   .receive-message {
     font-size: 10px;
     padding: 5px 25px;
-}
+  }
 
-.display-window {
-  font-size: 15px;
-}
+  .display-window {
+    font-size: 15px;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    background-color: white;
+    color: #134d71;
+    border: 1px solid #134d71;
+  }
 }

@@ -3,6 +3,7 @@ var receiveMessageButton = document.querySelector('.receive-message');
 var radioMantra = document.querySelector('.mantra');
 var radioAffirmation = document.querySelector('.affirmation');
 var clearButton = document.querySelector('.clear');
+var svg = document.querySelector('.meditation-svg');
 var userChoice;
 var phraseToDisplay;
 
@@ -39,8 +40,6 @@ function unclick() {
   } else { enableButton() };
 }
 
-
-
 function enableButton() {
   receiveMessageButton.classList.remove('disabled');
   userChoice = document.querySelector('input[name=user-choice]:checked').value;
@@ -54,6 +53,7 @@ function enableButton() {
 }
 
 function assignPhrase() {
+  displaySVG();
   if (userChoice === undefined) {
     window.alert('Please select an option.');
     return;
@@ -63,7 +63,8 @@ function assignPhrase() {
   } else {
     phraseToDisplay = randomPhrase(affirmations);
   }
-  setTimeOut(displayPhrase(), 5000);
+  //svgAnimation();
+  setTimeout(displayPhrase, 5000);
 }
 
 function displayPhrase() {
@@ -73,6 +74,21 @@ function displayPhrase() {
   phraseSpot.appendChild(p);
 
   clearButton.classList.remove('disabled');
+}
+
+function displaySVG() {
+  var div = document.createElement('div');
+  phraseSpot.innerHTML = '';
+  div.innerHTML = svgData;
+  console.log()
+  phraseSpot.appendChild(div);
+}
+
+function svgAnimation() {
+  svg.classList.add('meditation-animation');
+  setTimeout(function() {
+    svg.classList.remove('meditation-animation');
+  }, 6000);
 }
 
 function clearPage() {

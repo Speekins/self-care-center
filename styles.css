@@ -148,8 +148,46 @@ p {
   }
 }
 
+.show-all-section {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  padding: 10px 0;
+  justify-content: space-evenly;
+  font-size: 17px;
+}
+
+.user-options-section {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  justify-content: space-evenly;
+}
+
 .clear {
   margin-top: 15px;
+}
+.see-all {
+  margin-top: 15px;
+}
+
+/* .message:hover {
+  color: blue;
+} */
+
+.message-delete:hover {
+  color: red;
+}
+
+.message-edit:hover {
+  color: green;
+}
+
+.delete-message {
+  font-size: 55px;
+  color: black;
 }
 
 .hidden {

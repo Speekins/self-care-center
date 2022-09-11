@@ -34,9 +34,12 @@ var phraseToDisplay;
 var messageToDelete;
 var lastTarget;
 
-receiveMessageButton.addEventListener('click', assignPhrase);
 radioMantra.addEventListener('click', unclick);
 radioAffirmation.addEventListener('click', unclick);
+receiveMessageButton.addEventListener('click', assignPhrase);
+saveTextButton.addEventListener('click', saveNewText);
+newAffirmationButton.addEventListener('click', addNewMessage);
+newMantraButton.addEventListener('click', addNewMessage);
 clearButton.addEventListener('click', clearPage);
 seeAllButton.addEventListener('click', showAllMessages);
 homeButton.addEventListener('click', goHome);
@@ -46,10 +49,6 @@ deleteButton.addEventListener('click', goToDeleteSection);
 goBackButton.addEventListener('click', goBack);
 affirmationSection.addEventListener('dblclick', deleteOrEdit);
 mantraSection.addEventListener('dblclick', deleteOrEdit);
-saveTextButton.addEventListener('click', saveNewText);
-newAffirmationButton.addEventListener('click', addNewMessage);
-newMantraButton.addEventListener('click', addNewMessage);
-
 
 function randomPhrase(array) {
   var randomIndex = randomNumber(array);

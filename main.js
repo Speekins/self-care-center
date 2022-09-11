@@ -10,7 +10,6 @@ var h2 = document.querySelector('.choose');
 var displayWindow = document.querySelector('.display-window');
 var allMessagesButton = document.querySelector('.see-all');
 var homeButton = document.querySelector('.home');
-var deleteInfo = document.querySelector('.delete-message');
 var showAllSection = document.querySelector('.show-all-section');
 var userOptions = document.querySelector('.user-options-section');
 var addNewText = document.querySelector('.add-new');
@@ -21,12 +20,19 @@ var addButton = document.querySelector('.add');
 var editButton = document.querySelector('.edit');
 var deleteButton = document.querySelector('.delete');
 var goBackButton = document.querySelector('.go-back');
-var allMessages = document.querySelectorAll('.message');
-var deleteInstructions = document.querySelector('.delete-message');
+var deleteInstructions = document.querySelector('.delete-instructions');
+var editInstructions = document.querySelector('.edit-instructions');
+var editTextField = document.querySelector('.edit-text');
+var addNewTextField = document.querySelector('.add-new');
+var saveTextButton = document.querySelector('.save-text');
+var newAffirmationButton = document.querySelector('.save-new-affirmation');
+var newMantraButton = document.querySelector('.save-new-mantra');
+var newMessageButtons = document.querySelector('.new-message-buttons');
 
 var userChoice;
 var phraseToDisplay;
 var messageToDelete;
+var lastTarget;
 
 receiveMessageButton.addEventListener('click', assignPhrase);
 radioMantra.addEventListener('click', unclick);
@@ -34,12 +40,15 @@ radioAffirmation.addEventListener('click', unclick);
 clearButton.addEventListener('click', clearPage);
 seeAllButton.addEventListener('click', showAllMessages);
 homeButton.addEventListener('click', goHome);
-// addButton.addEventListener('click', );
-// editButton.addEventListener('click', );
+addButton.addEventListener('click', goToAddSection);
+editButton.addEventListener('click', goToEditSection);
 deleteButton.addEventListener('click', goToDeleteSection);
 goBackButton.addEventListener('click', goBack);
-affirmationSection.addEventListener('dblclick', removeMessage);
-mantraSection.addEventListener('dblclick', removeMessage);
+affirmationSection.addEventListener('dblclick', deleteOrEdit);
+mantraSection.addEventListener('dblclick', deleteOrEdit);
+saveTextButton.addEventListener('click', saveNewText);
+newAffirmationButton.addEventListener('click', addNewMessage);
+newMantraButton.addEventListener('click', addNewMessage);
 
 
 function randomPhrase(array) {
@@ -93,7 +102,6 @@ function assignPhrase() {
   } else {
     phraseToDisplay = randomPhrase(affirmations);
   }
-  //svgAnimation();
   setTimeout(displayPhrase, 5000);
 }
 
@@ -113,13 +121,6 @@ function displaySVG() {
   phraseSpot.appendChild(div);
 }
 
-// function svgAnimation() {
-//   svg.classList.add('meditation-animation');
-//   setTimeout(function() {
-//     svg.classList.remove('meditation-animation');
-//   }, 6000);
-// }
-
 function clearPage() {
   window.location.reload();
 }
@@ -133,7 +134,8 @@ function showAllMessages() {
   homeButton.classList.remove('hidden');
   showAllSection.classList.remove('hidden');
   userOptions.classList.remove('hidden');
-
+  document.body.classList.remove('body-mantra');
+  document.body.classList.remove('body-affirmation');
   populateMessages();
 }
 
@@ -151,12 +153,18 @@ function goHome() {
 function goBack() {
   deleteFromClasslist('message-delete');
   deleteFromClasslist('message-edit');
+  populateMessages();
   addButton.classList.remove('hidden');
   editButton.classList.remove('hidden');
   deleteButton.classList.remove('hidden');
   homeButton.classList.remove('hidden');
   goBackButton.classList.add('hidden');
   deleteInstructions.classList.add('hidden');
+  editInstructions.classList.add('hidden');
+  editTextField.classList.add('hidden');
+  saveTextButton.classList.add('hidden');
+  addNewTextField.classList.add('hidden');
+  newMessageButtons.classList.add('hidden');
 }
 
 function goToDeleteSection() {
@@ -169,7 +177,31 @@ function goToDeleteSection() {
   deleteInstructions.classList.remove('hidden');
 }
 
+function goToEditSection() {
+  addToClasslist('message-edit');
+  addButton.classList.add('hidden');
+  editButton.classList.add('hidden');
+  deleteButton.classList.add('hidden');
+  homeButton.classList.add('hidden');
+  goBackButton.classList.remove('hidden');
+  editInstructions.classList.remove('hidden');
+  editTextField.classList.remove('hidden');
+  saveTextButton.classList.remove('hidden');
+}
+
+function goToAddSection() {
+  addButton.classList.add('hidden');
+  editButton.classList.add('hidden');
+  deleteButton.classList.add('hidden');
+  homeButton.classList.add('hidden');
+  goBackButton.classList.remove('hidden');
+  addNewTextField.classList.remove('hidden');
+  newMessageButtons.classList.remove('hidden');
+}
+
 function populateMessages() {
+  affirmationSection.innerHTML = '';
+  mantraSection.innerHTML = '';
   for (var i = 0; i < affirmations.length; i++) {
     var p = document.createElement('p');
     p.classList.add('message');
@@ -200,30 +232,54 @@ function deleteFromClasslist(classToRemove) {
   }
 }
 
-function removeMessage(event) {
+function deleteOrEdit(event) {
   var target = event.target;
   messageToDelete = target.innerText;
-  target.remove();
-  
-  if (target.classList[1] === 'affirmations') {
+
+  if (target.classList.contains('message-delete')){
+    removeMessage(target);
+  } else if (target.classList.contains('message-edit')){
+    lastTarget = target;
+    editTextField.value = target.innerText;
+  }
+}
+
+function removeMessage(element) {
+  element.remove();
+  if (element.classList[1] === 'affirmations') {
     for (var i = 0; i < affirmations.length; i++) {
       if (affirmations[i] === messageToDelete) {
        affirmations.splice(i, 1);
       }
     } 
   } else {
-    for (var i = 0; i < mantras.length; i++) {
-      if (mantras[i] === messageToDelete) {
+      for (var i = 0; i < mantras.length; i++) {
+        if (mantras[i] === messageToDelete) {
        mantras.splice(i, 1);
+        }
       }
     }
-  }
 }
 
-/*
-double click a message
-message turns blue
-save the target to global variable
-the global variable is removed
-a function removes the message from the array
-*/
+function saveNewText() {
+  removeMessage(lastTarget);
+  lastTarget.innerText = editTextField.value;
+  if (lastTarget.classList[1] === 'affirmations') {
+    affirmations.push(lastTarget.innerText);
+  } else {
+    mantras.push(lastTarget.innerText);
+  }
+  editTextField.value = '';
+  goBack();
+}
+
+function addNewMessage(event) {
+  console.log(event.target);
+  if (event.target.classList.contains("save-new-affirmation")) {
+    affirmations.push(addNewTextField.value);
+  } else {
+    mantras.push(addNewTextField.value);
+  }
+  addNewTextField.value = '';
+  goBack();
+}

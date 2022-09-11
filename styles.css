@@ -101,7 +101,7 @@ div {
 }
 
 p {
-  animation: fadeIn 5s;
+  animation: fadeIn 4s;
 }
 
 @keyframes fadeIn {
@@ -155,7 +155,7 @@ p {
   height: auto;
   padding: 10px 0;
   justify-content: space-evenly;
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .user-options-section {
@@ -173,9 +173,27 @@ p {
   margin-top: 15px;
 }
 
-/* .message:hover {
-  color: blue;
-} */
+.edit-text,
+.add-new {
+  width: 50%;
+  height: auto;
+  margin: 10px;
+  font-size: 20px;
+}
+
+.new-message-buttons {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  height: auto;
+  justify-content: space-evenly;
+  margin: 10px;
+}
+
+.save-text,
+.save-new {
+  margin: 10px;
+}
 
 .message-delete:hover {
   color: red;
@@ -185,9 +203,11 @@ p {
   color: green;
 }
 
-.delete-message {
-  font-size: 55px;
+.delete-instructions,
+.edit-instructions {
+  font-size: 45px;
   color: black;
+  margin-bottom: 10px;
 }
 
 .hidden {
@@ -224,6 +244,10 @@ p {
     background-color: white;
     color: #134d71;
     border: 1px solid #134d71;
+  }
+
+  .hidden {
+    display: none;
   }
 }
 
@@ -277,6 +301,21 @@ p {
     color: #134d71;
     border: 1px solid #134d71;
   }
+
+  .show-all-section {
+    font-size: 15px;
+    margin: 20px;
+  }
+
+  .user-options-section > button,
+  .home {
+    font-size: 15px;
+    padding: 5px 15px;
+  }
+
+  .hidden {
+    display: none;
+  }
 }
 
 @media (max-width: 767px) {
@@ -316,5 +355,20 @@ p {
     background-color: white;
     color: #134d71;
     border: 1px solid #134d71;
+  }
+
+  .show-all-section {
+    font-size: 12px;
+    margin: 15px;
+  }
+
+  .user-options-section > button,
+  .home {
+    font-size: 13px;
+    padding: 5px 15px;
+  }
+
+  .hidden {
+    display: none;
   }
 }
